@@ -1,0 +1,36 @@
+{
+
+  "name": "rest-countries-api-with-color-theme-switcher-master",
+
+  "description": "![Design preview for the REST Countries API with color theme switcher coding challenge](./design/desktop-preview.jpg)",
+
+  "version": "1.0.0",
+
+  "main": "index.js",
+
+  "scripts": {
+
+    "tailwind": "npx tailwindcss -i ./assets/css/input.css -o ./assets/css/style.css --watch"
+
+  },
+
+  "keywords": [
+
+    "rest-countries-api-with-color-theme-switcher"
+
+  ],
+
+  "author": "Hadi Sanei",
+
+  "license": "MIT",
+
+  "devDependencies": {
+
+    "tailwindcss": "^3.4.4",
+
+    "typescript": "^5.5.3"
+
+  }
+
+}
+
