@@ -22,4 +22,11 @@
         font-family: 'NunitoSans';
         @apply bg-LightMode_Background;
     }
+
+    body.dark-theme{
+        @apply bg-DarkMode_Background text-DarkModeText_and_Light_Mode_Elements;
+    }
+    body.dark-theme > header{
+        @apply bg-DarkMode_Elements;
+    }
 }

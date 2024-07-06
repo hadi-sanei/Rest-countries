@@ -467,6 +467,15 @@ body {
   background-color: hsl(var(--Light-Mode-Background));
 }
 
+body.dark-theme {
+  background-color: hsl(var(--Dark-Mode-Background));
+  color: hsl(var(--Dark-Mode-Text-and-Light-Mode-Elements));
+}
+
+body.dark-theme > header {
+  background-color: hsl(var(--Dark-Mode-Elements));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -617,6 +626,28 @@ body {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.text-LightMode_Text {
+  color: hsl(var(--Light-Mode-Text));
+}
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.duration-100 {
+  transition-duration: 100ms;
+}
+
+.duration-1000 {
+  transition-duration: 1000ms;
+}
+
+.duration-500 {
+  transition-duration: 500ms;
 }
 
 @media (min-width: 640px) {
