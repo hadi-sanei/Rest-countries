@@ -446,6 +446,27 @@ video {
   display: none;
 }
 
+:root {
+  --Dark-Mode-Elements: 209 23% 22%;
+  --Dark-Mode-Background: 207 26% 17%;
+  --Light-Mode-Text: 200 15% 8%;
+  --Light-Mode-Input: 0 0% 52%;
+  --Light-Mode-Background: 0 0% 98%;
+  --Dark-Mode-Text-and-Light-Mode-Elements: 0 0% 100%;
+}
+
+@font-face {
+  font-family: 'NunitoSans';
+
+  src: url('../font/NunitoSans_7pt_Condensed-Medium.ttf') format('TrueType'),
+            url('../font/NunitoSans_7pt_Expanded-Medium.ttf') format('TrueType');
+}
+
+body {
+  font-family: 'NunitoSans';
+  background-color: hsl(var(--Light-Mode-Background));
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -552,4 +573,55 @@ video {
   --tw-contain-layout:  ;
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
+}
+
+.mx-1 {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+@media (min-width: 640px) {
+  .sm\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
 }

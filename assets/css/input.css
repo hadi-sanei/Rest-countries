@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --Dark-Mode-Elements: 209 23% 22%;
+        --Dark-Mode-Background: 207 26% 17%;
+        --Light-Mode-Text: 200 15% 8%;
+        --Light-Mode-Input: 0 0% 52%;
+        --Light-Mode-Background: 0 0% 98%;
+        --Dark-Mode-Text-and-Light-Mode-Elements: 0 0% 100%;
+    }
+
+    @font-face {
+        font-family: 'NunitoSans';
+        src: url('../font/NunitoSans_7pt_Condensed-Medium.ttf') format('TrueType'),
+            url('../font/NunitoSans_7pt_Expanded-Medium.ttf') format('TrueType');
+    }
+
+    body {
+        font-family: 'NunitoSans';
+        @apply bg-LightMode_Background;
+    }
+}
