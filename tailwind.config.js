@@ -3,10 +3,6 @@ module.exports = {
   content: ["./*.{html,js}"],
   theme: {
     extend: {
-      screens: {
-        'Mobile': '375px',
-        'Desktop': '1400px'
-      },
       colors: {
         LightMode_Background: 'hsl(var(--Light-Mode-Background))',
         DarkModeText_and_Light_Mode_Elements: 'hsl(var(--Dark-Mode-Text-and-Light-Mode-Elements))',
