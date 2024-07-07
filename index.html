@@ -10,14 +10,31 @@
     <title>rest-countries-api-with-color-theme-switcher-master</title>
 </head>
 <body class="text-LightMode_Text transition-all duration-500">
-    <header class="bg-white">
-        <section class="flex justify-between items-center p-4">
+    <header class="content bg-white p-4 shadow-md shadow-black/5">
+        <section class="flex justify-between items-center">
             <section>
                 <h2 class="font-semibold sm:text-xl">where in the world?</h2>
             </section>
             <section id="change-theme" class="text-sm cursor-pointer"><i class="fa-regular fa-moon text-base mx-1"></i> Dark Mode</section>
         </section>
     </header>
+    <main class="p-4">
+        <section class="flex flex-col sm:flex-row sm:justify-between my-5 m-auto gap-5 sm:gap-0">
+            <section class="content shadow-md shadow-black/5 bg-white rounded-lg sm:w-80 p-3 focus-within:outline focus-within:outline-3 focus-within:outline-teal-700/50">
+                <form action="" class="flex items-center gap-4">
+                    <button><i class="fa-solid fa-magnifying-glass text-slate-400 text-base mx-1"></i></button>
+                    <input type="search" class="w-full border-none outline-none placeholder:text-xs bg-transparent" placeholder="Search for a country..."></section>    
+                </form>
+            <section>
+                <select class="content shadow-md shadow-black/5 bg-white w-3/6 sm:w-auto cursor-pointer p-3 rounded-lg" name="" id="">
+                    <option value="" selected>Filter by Region</option>
+                    <option value="">country</option>
+                    <option value="">country</option>
+                    <option value="">country</option>
+                </select>
+            </section>
+        </section>
+    </main>
 </body>
 <script src="./assets/js/script.js"></script>
 
