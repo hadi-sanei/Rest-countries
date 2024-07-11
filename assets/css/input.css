@@ -14,8 +14,18 @@
 
     @font-face {
         font-family: 'NunitoSans';
-        src: url('../font/NunitoSans_7pt_Condensed-Medium.ttf') format('TrueType'),
-            url('../font/NunitoSans_7pt_Expanded-Medium.ttf') format('TrueType');
+        src: url('../font/NunitoSans_10pt-Light.ttf') format('TrueType');
+        font-weight: 300;
+    }
+    @font-face {
+        font-family: 'NunitoSans';
+        src: url('../font/NunitoSans_10pt-Medium.ttf') format('TrueType');
+        font-weight: 600;
+    }
+    @font-face {
+        font-family: 'NunitoSans';
+        src: url('../font/NunitoSans_10pt-Bold.ttf') format('TrueType');
+        font-weight: 800;
     }
 
     body {
@@ -23,9 +33,27 @@
         @apply bg-LightMode_Background;
     }
 }
-body.dark-theme{
+
+body.dark-theme {
     @apply bg-DarkMode_Background text-DarkModeText_and_Light_Mode_Elements;
 }
-body.dark-theme .content{
+
+body.dark-theme .content {
     @apply bg-DarkMode_Elements;
+}
+
+.country-box {
+    @apply content w-72 m-auto rounded-lg overflow-hidden transition-all duration-300 bg-white shadow-[0_0_15px] shadow-black/15 cursor-pointer hover:shadow-black/0 hover:-translate-y-2;
+}
+
+.country-box section>img {
+    @apply w-full h-44 object-cover;
+}
+
+.country-box .detail-box {
+    @apply p-2 pb-5;
+}
+
+.country-box .detail-box>header>h2 {
+    @apply text-lg font-bold py-4;
 }
