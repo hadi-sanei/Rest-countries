@@ -839,7 +839,7 @@ body.dark-theme .country-box {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
-.country-box section>img {
+.country-box .flag-image {
   height: 11rem;
   width: 100%;
   -o-object-fit: cover;
@@ -851,7 +851,7 @@ body.dark-theme .country-box {
   padding-bottom: 1.25rem;
 }
 
-.country-box .detail-box>header>h2 {
+.country-box .title {
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 1.125rem;

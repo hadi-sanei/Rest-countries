@@ -12,8 +12,8 @@ export class ApiCountry {
         this.api = 'https://restcountries.com/v3.1';
     }
     getAllCounties() {
-        return __awaiter(this, void 0, void 0, function* () {
-            const api = yield fetch(this.api + '/all');
+        return __awaiter(this, arguments, void 0, function* (path = '/all') {
+            const api = yield fetch(this.api + path);
             const data = yield api.json();
             return data;
         });

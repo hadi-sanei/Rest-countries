@@ -1,4 +1,6 @@
-"use strict";
+import { CountryView } from "./CountryView.js";
+const countryView = new CountryView;
+countryView.showingCountries();
 const change_theme = document.getElementById('change-theme');
 if (document.cookie.includes('theme=dark')) {
     document.body.classList.add('dark-theme');

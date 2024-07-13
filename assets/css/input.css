@@ -46,7 +46,7 @@ body.dark-theme .content {
     @apply content w-72 m-auto rounded-lg overflow-hidden transition-all duration-300 bg-white shadow-[0_0_15px] shadow-black/15 cursor-pointer hover:shadow-black/0 hover:-translate-y-2;
 }
 
-.country-box section>img {
+.country-box .flag-image {
     @apply w-full h-44 object-cover;
 }
 
@@ -54,6 +54,6 @@ body.dark-theme .content {
     @apply p-2 pb-5;
 }
 
-.country-box .detail-box>header>h2 {
+.country-box .title {
     @apply text-lg font-bold py-4;
 }
