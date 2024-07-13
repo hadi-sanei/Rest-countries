@@ -1,7 +1,7 @@
 import { ApiCountry } from "./serviceCountry.js";
 import { CountryView } from "./CountryView.js";
 const countryView:CountryView=new CountryView;
-countryView.showingCountries();
+countryView.displayAllCountries();
 const change_theme = document.getElementById('change-theme') as HTMLElement;
 if (document.cookie.includes('theme=dark')) {
     document.body.classList.add('dark-theme');

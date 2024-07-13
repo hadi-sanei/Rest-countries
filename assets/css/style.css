@@ -801,6 +801,14 @@ body {
   transition-duration: 500ms;
 }
 
+.message {
+  width: 100%;
+  text-align: center;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 700;
+}
+
 body.dark-theme {
   background-color: hsl(var(--Dark-Mode-Background));
   color: hsl(var(--Dark-Mode-Text-and-Light-Mode-Elements));

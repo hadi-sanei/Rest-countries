@@ -13,9 +13,25 @@ export class ApiCountry {
     }
     getAllCounties() {
         return __awaiter(this, arguments, void 0, function* (path = '/all') {
-            const api = yield fetch(this.api + path);
-            const data = yield api.json();
-            return data;
+            try {
+                const response = yield fetch(this.api + path);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const data = yield response.json();
+                return data;
+            }
+            catch (error) {
+                this.showErrorMessage('Failed to fetch countries:' + error);
+                return [];
+            }
         });
+    }
+    showErrorMessage(error) {
+        const sectionCountries = document.getElementById('countries-section');
+        const element = document.createElement('section');
+        element.classList.add('message');
+        element.textContent = error;
+        sectionCountries.append(element);
     }
 }

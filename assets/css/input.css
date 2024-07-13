@@ -33,7 +33,9 @@
         @apply bg-LightMode_Background;
     }
 }
-
+.message{
+    @apply text-center text-lg font-bold w-full;
+}
 body.dark-theme {
     @apply bg-DarkMode_Background text-DarkModeText_and_Light_Mode_Elements;
 }
