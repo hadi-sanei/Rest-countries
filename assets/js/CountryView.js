@@ -12,27 +12,45 @@ export class CountryView extends ApiCountry {
     constructor() {
         super(...arguments);
         this.sectionCountries = document.getElementById('countries-section');
+        this.countries = [];
     }
     displayAllCountries() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const countries = yield this.getAllCounties();
-                console.log(countries);
-                if (countries.length === 0) {
+                this.countries = yield this.getAllCounties();
+                if (this.countries.length === 0) {
                     throw new Error('No countries data available.');
                 }
-                this.renderCountries(countries);
+                this.renderCountries(this.countries);
             }
             catch (error) {
                 this.showErrorMessage('Failed to display countries:' + error);
             }
         });
     }
+    searchCountry(name) {
+        if (this.countries.length === 0) {
+            return;
+        }
+        try {
+            const filteredCountries = this.countries.filter((country) => country.name.common.toLowerCase().includes(name.toLowerCase()));
+            if (filteredCountries.length === 0) {
+                throw new Error('No matching countries found.');
+            }
+            this.sectionCountries.innerHTML = '';
+            this.renderCountries(filteredCountries);
+        }
+        catch (error) {
+            this.sectionCountries.innerHTML = '';
+            this.showErrorMessage(error.message);
+        }
+    }
     renderCountries(countries) {
         const countriesOfFragment = document.createDocumentFragment();
         countries.forEach((country) => {
             const element = document.createElement('article');
             element.classList.add('country-box');
+            let t = document.createElement('h2').classList.add('title');
             element.innerHTML = `
                     <a href="./detail.html">
                         <section>

@@ -3,18 +3,38 @@ import { ApiCountry } from "./serviceCountry.js";
 
 export class CountryView extends ApiCountry {
     private sectionCountries = document.getElementById('countries-section') as HTMLElement;
+    private countries: Country[] = [];
 
     public async displayAllCountries() {
         try {
-            const countries = await this.getAllCounties();
-            console.log(countries);
-            if (countries.length === 0) {
+            this.countries = await this.getAllCounties();
+            if (this.countries.length === 0) {
                 throw new Error('No countries data available.');
             }
-            this.renderCountries(countries);
+            this.renderCountries(this.countries);
         } catch (error) {
             this.showErrorMessage('Failed to display countries:' + error)
 
+        }
+    }
+
+    public searchCountry(name: string) {
+        if (this.countries.length === 0) {
+            return
+        }
+        try {
+            const filteredCountries = this.countries.filter((country: Country) =>
+                country.name.common.toLowerCase().includes(name.toLowerCase())
+            );
+
+            if (filteredCountries.length === 0) {
+                throw new Error('No matching countries found.');
+            }
+            this.sectionCountries.innerHTML = '';
+            this.renderCountries(filteredCountries);
+        } catch (error: any) {
+            this.sectionCountries.innerHTML = '';
+            this.showErrorMessage(error.message);
         }
     }
 
@@ -23,6 +43,7 @@ export class CountryView extends ApiCountry {
         countries.forEach((country: Country) => {
             const element = document.createElement('article');
             element.classList.add('country-box');
+            let t = document.createElement('h2').classList.add('title');
             element.innerHTML = `
                     <a href="./detail.html">
                         <section>
@@ -44,6 +65,7 @@ export class CountryView extends ApiCountry {
                 `;
             countriesOfFragment.appendChild(element);
         });
+
         this.sectionCountries.appendChild(countriesOfFragment);
     }
 }
