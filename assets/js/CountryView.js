@@ -45,6 +45,29 @@ export class CountryView extends ApiCountry {
             this.showErrorMessage(error.message);
         }
     }
+    searchCountryByRegion(region) {
+        if (this.countries.length === 0) {
+            return;
+        }
+        try {
+            if (region == 'all') {
+                this.sectionCountries.innerHTML = '';
+                this.renderCountries(this.countries);
+            }
+            else {
+                const filteredCountries = this.countries.filter((country) => country.region.toLowerCase().includes(region.toLowerCase()));
+                if (filteredCountries.length === 0) {
+                    throw new Error('No matching countries found.');
+                }
+                this.sectionCountries.innerHTML = '';
+                this.renderCountries(filteredCountries);
+            }
+        }
+        catch (error) {
+            this.sectionCountries.innerHTML = '';
+            this.showErrorMessage(error.message);
+        }
+    }
     renderCountries(countries) {
         const countriesOfFragment = document.createDocumentFragment();
         countries.forEach((country) => {

@@ -25,13 +25,18 @@ search.addEventListener('keyup', (e: any) => {
     countryView.searchCountry(search.value)
 });
 filter_box.addEventListener('click', function (e) {
-    this.children[1].classList.toggle('hidden');
-    this.children[0].classList.toggle('active');
+    this.children[2].classList.toggle('hidden');
+    this.children[1].classList.toggle('active');
 });
 
 // click buttons of filter
 filter_buttons.forEach((filter_button) => {
-    filter_button.addEventListener('click', function (e) {
-        console.log('object');
+    filter_button.addEventListener('click', function (this:HTMLElement,e:Event) {
+        if(this.textContent=='all'){
+            filter_box.children[0].textContent='Filter by Region';
+        }else{
+            filter_box.children[0].textContent=this.textContent;
+        }
+        countryView.searchCountryByRegion(this.children[0].textContent?.trim() as string)
     });
 });
