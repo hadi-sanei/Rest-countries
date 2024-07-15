@@ -59,3 +59,11 @@ body.dark-theme .content {
 .country-box .title {
     @apply text-lg font-bold py-4;
 }
+
+.filter-icon {
+    @apply rotate-90 transition-all;
+}
+
+.filter-icon.active {
+    @apply rotate-0;
+}

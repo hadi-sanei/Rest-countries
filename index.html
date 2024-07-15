@@ -26,15 +26,18 @@
                     <input id="search" type="search" class="w-full border-none outline-none placeholder:text-xs bg-transparent" placeholder="Search for a country..."></section>    
                 </form>
             <section>
-                <select class="content shadow-md shadow-black/5 bg-white w-3/6 sm:w-auto cursor-pointer p-3 rounded-lg" name="" id="">
-                    <option value="" selected>Filter by Region</option>
-                    <option value="">all</option>
-                    <option value="">Africa</option>
-                    <option value="">America</option>
-                    <option value="">Asia</option>
-                    <option value="">Europa</option>
-                    <option value="">Oceania</option>
-                </select>
+                <section id="filter-box" class="content text-sm sm:text-base group flex justify-between items-center gap-5 relative shadow-md shadow-black/5 bg-white w-3/6 sm:w-auto cursor-pointer p-3 rounded-lg">
+                    Filter by Region
+                    <i class="filter-icon fa-solid fa-chevron-down text-xs text-slate-500"></i>
+                    <section class="content hidden absolute z-10 left-0 -bottom-36 sm:-bottom-[165px] w-full rounded-lg bg-white p-2 shadow-md shadow-black/5">
+                        <section class="filter-button transition-all hover:text-purple-700"><span>all</span></section>
+                        <section class="filter-button transition-all hover:text-purple-700"><span>Africa</span></section>
+                        <section class="filter-button transition-all hover:text-purple-700"><span>America</span></section>
+                        <section class="filter-button transition-all hover:text-purple-700"><span>Asia</span></section>
+                        <section class="filter-button transition-all hover:text-purple-700"><span>Europa</span></section>
+                        <section class="filter-button transition-all hover:text-purple-700"><span>Oceania</span>  </section>    
+                    </section>
+                </section>
             </section>
         </section>
         <section id="countries-section" class="flex flex-wrap gap-10">
