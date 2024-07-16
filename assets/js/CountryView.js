@@ -28,8 +28,8 @@ export class CountryView extends ApiCountry {
             }
         });
     }
-    searchCountry(name) {
-        if (this.countries.length === 0) {
+    searchCountries(name) {
+        if (this.checkIFCountriesExist(this.countries)) {
             return;
         }
         try {
@@ -45,8 +45,8 @@ export class CountryView extends ApiCountry {
             this.showErrorMessage(error.message);
         }
     }
-    searchCountryByRegion(region) {
-        if (this.countries.length === 0) {
+    searchCountriesByRegion(region) {
+        if (this.checkIFCountriesExist(this.countries)) {
             return;
         }
         try {
@@ -75,7 +75,7 @@ export class CountryView extends ApiCountry {
             element.classList.add('country-box');
             let t = document.createElement('h2').classList.add('title');
             element.innerHTML = `
-                    <a href="./detail.html">
+                    <a href="./detail.html?name=${country.name.common}">
                         <section>
                             <img class="flag-image" src="${country.flags.png}" alt="">
                         </section>
@@ -96,5 +96,11 @@ export class CountryView extends ApiCountry {
             countriesOfFragment.appendChild(element);
         });
         this.sectionCountries.appendChild(countriesOfFragment);
+    }
+    checkIFCountriesExist(countries) {
+        if (countries.length === 0) {
+            return false;
+        }
+        return true;
     }
 }

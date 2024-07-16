@@ -18,9 +18,9 @@ export class CountryView extends ApiCountry {
         }
     }
 
-    public searchCountry(name: string) {
-        if (this.countries.length === 0) {
-            return
+    public searchCountries(name: string) {
+        if (this.checkIFCountriesExist(this.countries)) {
+            return;
         }
         try {
             const filteredCountries = this.countries.filter((country: Country) =>
@@ -38,8 +38,8 @@ export class CountryView extends ApiCountry {
         }
     }
 
-    public searchCountryByRegion(region: string) {
-        if (this.countries.length === 0) {
+    public searchCountriesByRegion(region: string) {
+        if (this.checkIFCountriesExist(this.countries)) {
             return;
         }
         try {
@@ -64,6 +64,9 @@ export class CountryView extends ApiCountry {
         }
     }
 
+    
+
+
     private renderCountries(countries: Country[]) {
         const countriesOfFragment = document.createDocumentFragment();
         countries.forEach((country: Country) => {
@@ -71,7 +74,7 @@ export class CountryView extends ApiCountry {
             element.classList.add('country-box');
             let t = document.createElement('h2').classList.add('title');
             element.innerHTML = `
-                    <a href="./detail.html">
+                    <a href="./detail.html?name=${country.name.common}">
                         <section>
                             <img class="flag-image" src="${country.flags.png}" alt="">
                         </section>
@@ -93,5 +96,12 @@ export class CountryView extends ApiCountry {
         });
 
         this.sectionCountries.appendChild(countriesOfFragment);
+    }
+
+    protected checkIFCountriesExist(countries: Country[]): boolean {
+        if (countries.length === 0) {
+            return false;
+        }
+        return true;
     }
 }

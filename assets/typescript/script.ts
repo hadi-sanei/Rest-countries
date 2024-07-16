@@ -1,4 +1,3 @@
-import { ApiCountry } from "./serviceCountry.js";
 import { CountryView } from "./CountryView.js";
 const countryView: CountryView = new CountryView;
 countryView.displayAllCountries();
@@ -22,7 +21,7 @@ change_theme.addEventListener('click', () => {
 
 //searching the country
 search.addEventListener('keyup', (e: any) => {
-    countryView.searchCountry(search.value)
+    countryView.searchCountries(search.value)
 });
 filter_box.addEventListener('click', function (e) {
     this.children[2].classList.toggle('hidden');
@@ -37,6 +36,6 @@ filter_buttons.forEach((filter_button) => {
         }else{
             filter_box.children[0].textContent=this.textContent;
         }
-        countryView.searchCountryByRegion(this.children[0].textContent?.trim() as string)
+        countryView.searchCountriesByRegion(this.children[0].textContent?.trim() as string)
     });
 });

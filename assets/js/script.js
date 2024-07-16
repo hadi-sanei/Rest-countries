@@ -17,7 +17,7 @@ change_theme.addEventListener('click', () => {
     document.cookie = 'theme=dark;max-age=0';
 });
 search.addEventListener('keyup', (e) => {
-    countryView.searchCountry(search.value);
+    countryView.searchCountries(search.value);
 });
 filter_box.addEventListener('click', function (e) {
     this.children[2].classList.toggle('hidden');
@@ -32,6 +32,6 @@ filter_buttons.forEach((filter_button) => {
         else {
             filter_box.children[0].textContent = this.textContent;
         }
-        countryView.searchCountryByRegion((_a = this.children[0].textContent) === null || _a === void 0 ? void 0 : _a.trim());
+        countryView.searchCountriesByRegion((_a = this.children[0].textContent) === null || _a === void 0 ? void 0 : _a.trim());
     });
 });
