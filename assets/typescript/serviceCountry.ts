@@ -11,10 +11,12 @@ export class ApiCountry {
             const data: any[] = await response.json();
             return data;
         } catch (error) {
-            this.showErrorMessage('Failed to fetch countries:'+ error)
+            this.showErrorMessage('Failed to fetch countries:'+ error);
             return [];
         }
     }
+
+    
 
     
     protected showErrorMessage(error: string) {

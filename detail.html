@@ -19,11 +19,22 @@
         </section>
     </header>
     <main id="countries-section" class="p-4 relative">
-        <section class="p-4 py-7">
+
+        <!-- loader -->
+        <section id="loader" class="m-auto text-center">
+            <div class="loader m-auto mt-12"></div>
+            <div class="mt-7">
+                Challenge by 
+                <a href="https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca" class="content bg-white shadow-md shadow-black/5 p-2 rounded-lg font-bold" target="_blank">Frontend Mentor</a> . Coded by <a href="https://github.com/hadi-sanei" class="content bg-white shadow-md shadow-black/5 p-2 rounded-lg font-bold">Hadi Sanei</a> .
+            </div> 
+        </section>
+        <!-- end loader -->
+        
+        <section id="detail" class="p-4 py-7 hidden">
             <section>
-                <a href="./index.html" class="btn">
+                <button class="btn" onclick="window.history.back()">
                     <i class="fa-solid fa-arrow-left-long text-xs mr-1"></i> back
-                </a>
+                </button>
                 <section class="flex flex-col lg:flex-row mt-5 lg:h-[21rem]">
                     <section class="lg:w-2/5">
                         <img id="Country-Image" class="w-full h-full" src="" alt="">

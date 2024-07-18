@@ -3,6 +3,7 @@ export class CountryView extends ApiCountry {
     constructor() {
         super(...arguments);
         this.countries = [];
+        this.loader = document.getElementById('loader');
     }
     async displayAllCountries() {
         try {
@@ -72,6 +73,7 @@ export class CountryView extends ApiCountry {
         });
     }
     renderCountries(countries) {
+        this.loader.classList.add('hidden');
         const countriesOfFragment = document.createDocumentFragment();
         countries.forEach((country) => {
             const element = document.createElement('article');
@@ -100,6 +102,9 @@ export class CountryView extends ApiCountry {
         this.sectionCountries.appendChild(countriesOfFragment);
     }
     renderCountry(country) {
+        this.loader.classList.add('hidden');
+        const detailSection = document.getElementById('detail');
+        detailSection.classList.remove('hidden');
         const countryName = document.getElementById('Name');
         const nativeName = document.getElementById('Native-Name');
         const population = document.getElementById('Population');
@@ -137,7 +142,7 @@ export class CountryView extends ApiCountry {
         }
     }
     checkIFCountriesExist(countries) {
-        if (countries.length === 0) {
+        if (!countries || countries.length === 0) {
             return true;
         }
         return false;

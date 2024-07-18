@@ -3,6 +3,7 @@ import { ApiCountry } from "./serviceCountry.js";
 
 export class CountryView extends ApiCountry {
     private countries: Country[] = [];
+    protected loader = document.getElementById('loader') as HTMLElement;
 
     public async displayAllCountries() {
         try {
@@ -81,6 +82,7 @@ export class CountryView extends ApiCountry {
 
 
     private renderCountries(countries: Country[]) {
+        this.loader.classList.add('hidden');
         const countriesOfFragment = document.createDocumentFragment();
         countries.forEach((country: Country) => {
             const element = document.createElement('article');
@@ -110,6 +112,12 @@ export class CountryView extends ApiCountry {
         this.sectionCountries.appendChild(countriesOfFragment);
     }
     private renderCountry(country: Country) {
+        this.loader.classList.add('hidden');
+        
+        //show section detail
+        const detailSection = document.getElementById('detail') as HTMLElement;
+        detailSection.classList.remove('hidden');
+
         const countryName = document.getElementById('Name')!;
         const nativeName = document.getElementById('Native-Name')!;
         const population = document.getElementById('Population')!;
@@ -135,7 +143,7 @@ export class CountryView extends ApiCountry {
             .join(", ");
 
         languages.textContent = Object.values(country.languages).join(", ");
-        if(country.borders){
+        if (country.borders) {
             country.borders.forEach((border: any) => {
                 const button = document.createElement('a');
                 button.href = './detail.html?country=' + border;
@@ -143,15 +151,15 @@ export class CountryView extends ApiCountry {
                 button.classList.add('btn');
                 borderContainer.appendChild(button);
             });
-        }else{
+        } else {
             borderContainer.parentElement!.remove();
         }
-        
+
 
     }
 
     protected checkIFCountriesExist(countries: Country[]): boolean {
-        if (countries.length === 0) {
+        if (!countries || countries.length === 0) {
             return true;
         }
         return false;
