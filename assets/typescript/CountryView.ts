@@ -2,7 +2,6 @@ import { Country } from './Country.js'
 import { ApiCountry } from "./serviceCountry.js";
 
 export class CountryView extends ApiCountry {
-    private sectionCountries = document.getElementById('countries-section') as HTMLElement;
     private countries: Country[] = [];
 
     public async displayAllCountries() {
@@ -13,12 +12,12 @@ export class CountryView extends ApiCountry {
             }
             this.renderCountries(this.countries);
         } catch (error) {
-            this.showErrorMessage('Failed to display countries:' + error)
-
+            this.showErrorMessage('Failed to display countries:' + error);
         }
     }
 
     public searchCountries(name: string) {
+
         if (this.checkIFCountriesExist(this.countries)) {
             return;
         }
@@ -26,7 +25,6 @@ export class CountryView extends ApiCountry {
             const filteredCountries = this.countries.filter((country: Country) =>
                 country.name.common.toLowerCase().includes(name.toLowerCase())
             );
-
             if (filteredCountries.length === 0) {
                 throw new Error('No matching countries found.');
             }
@@ -64,7 +62,22 @@ export class CountryView extends ApiCountry {
         }
     }
 
-    
+    public searchCountry(countryName: string) {
+        const country = this.getAllCounties('/name/' + countryName);
+        country.then(([data]) => {
+            if (this.checkIFCountriesExist(data)) {
+                return;
+            }
+            try {
+                this.renderCountry(data);
+
+            } catch (error: any) {
+                this.sectionCountries.innerHTML = '';
+                this.showErrorMessage(error.message);
+            }
+        });
+
+    }
 
 
     private renderCountries(countries: Country[]) {
@@ -72,9 +85,8 @@ export class CountryView extends ApiCountry {
         countries.forEach((country: Country) => {
             const element = document.createElement('article');
             element.classList.add('country-box');
-            let t = document.createElement('h2').classList.add('title');
             element.innerHTML = `
-                    <a href="./detail.html?name=${country.name.common}">
+                    <a href="./detail.html?country=${country.name.common}">
                         <section>
                             <img class="flag-image" src="${country.flags.png}" alt="">
                         </section>
@@ -84,7 +96,7 @@ export class CountryView extends ApiCountry {
                             </header>
                             <section>
                                 <ul>
-                                    <li><span>Population: ${country.population}</span></li>
+                                    <li><span>Population: ${country.population.toLocaleString()}</span></li>
                                     <li><span>Region: ${country.region}</span></li>
                                     <li><span>Capital: ${country.capital}</span></li>
                                 </ul>
@@ -97,11 +109,51 @@ export class CountryView extends ApiCountry {
 
         this.sectionCountries.appendChild(countriesOfFragment);
     }
+    private renderCountry(country: Country) {
+        const countryName = document.getElementById('Name')!;
+        const nativeName = document.getElementById('Native-Name')!;
+        const population = document.getElementById('Population')!;
+        const region = document.getElementById('Region')!;
+        const subRegion = document.getElementById('Sub-Region')!;
+        const capital = document.getElementById('Capital')!;
+        const countryImage = document.getElementById('Country-Image') as HTMLImageElement;
+        const domain = document.getElementById('Domain')!;
+        const currencies = document.getElementById('Currencies')!;
+        const languages = document.getElementById('Languages')!;
+        const borderContainer = document.getElementById('border-container')!;
+        countryName.textContent = country.name.common;
+        nativeName.textContent = country.name.common;
+        population.textContent = country.population.toLocaleString();
+        region.textContent = country.region;
+        subRegion.textContent = country.subregion;
+        capital.textContent = country.capital;
+        countryImage.src = country.flags.png;
+        domain.textContent = country.tld;
+
+        currencies.textContent = Object.values(country.currencies)
+            .map((currency: any) => currency.name)
+            .join(", ");
+
+        languages.textContent = Object.values(country.languages).join(", ");
+        if(country.borders){
+            country.borders.forEach((border: any) => {
+                const button = document.createElement('a');
+                button.href = './detail.html?country=' + border;
+                button.textContent = border;
+                button.classList.add('btn');
+                borderContainer.appendChild(button);
+            });
+        }else{
+            borderContainer.parentElement!.remove();
+        }
+        
+
+    }
 
     protected checkIFCountriesExist(countries: Country[]): boolean {
         if (countries.length === 0) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
 }

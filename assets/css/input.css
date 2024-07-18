@@ -67,3 +67,6 @@ body.dark-theme .content {
 .filter-icon.active {
     @apply rotate-0;
 }
+.btn{
+    @apply content p-1 px-4 bg-white hover:opacity-75 transition-all rounded-lg shadow-[0_0_15px_-0] shadow-black/15 text-sm;
+}

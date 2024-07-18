@@ -13,43 +13,40 @@
     <header class="content bg-white p-4 shadow-md shadow-black/5 relative z-50">
         <section class="flex justify-between items-center">
             <section>
-                <h2 class="font-bold sm:text-xl">where in the world?</h2>
+                <h2 class="font-bold sm:text-xl"><a href="index.html">where in the world?</a></h2>
             </section>
             <section id="change-theme" class="text-sm cursor-pointer"><i class="fa-regular fa-moon text-base mx-1"></i> Dark Mode</section>
         </section>
     </header>
-    <main class="p-4 relative">
+    <main id="countries-section" class="p-4 relative">
         <section class="p-4 py-7">
             <section>
-                <a href="./index.html" class="content p-1 px-4 bg-white hover:opacity-75 transition-all rounded-sm shadow-[0_0_15px_-0] shadow-black/15 text-sm">
+                <a href="./index.html" class="btn">
                     <i class="fa-solid fa-arrow-left-long text-xs mr-1"></i> back
                 </a>
                 <section class="flex flex-col lg:flex-row mt-5 lg:h-[21rem]">
                     <section class="lg:w-2/5">
-                        <img class="w-full h-full" src="./design/desktop-design-detail-light.jpg" alt="">
+                        <img id="Country-Image" class="w-full h-full" src="" alt="">
                     </section>
                     <section class="my-4 lg:w-2/4 lg:p-10 lg:pl-16">
-                        <h2 class="text-xl lg:text-2xl font-bold">name country</h2>
+                        <h2 id="Name" class="text-xl lg:text-2xl font-bold"></h2>
                         <section class="my-4 text-sm lg:flex lg:gap-52">
-                            <ul>
-                                <li>Native Name: <span></span></li>
-                                <li>Population: <span></span></li>
-                                <li>Region: <span></span></li>
-                                <li>Sub Region: <span></span></li>
-                                <li>Capital: <span></span></li>
+                            <ul class="space-y-1">
+                                <li class="font-semibold">Native Name: <span class="font-medium" id="Native-Name"></span></li>
+                                <li class="font-semibold">Population: <span class="font-medium" id="Population"></span></li>
+                                <li class="font-semibold">Region: <span class="font-medium" id="Region"></span></li>
+                                <li class="font-semibold">Sub Region: <span class="font-medium" id="Sub-Region"></span></li>
+                                <li class="font-semibold">Capital: <span class="font-medium" id="Capital"></span></li>
                             </ul>
-                            <ul>
-                                <li>Top Level Domain: <span></span></li>
-                                <li>Currencies: <span></span></li>
-                                <li>Languages: <span></span></li>
+                            <ul class="space-y-1">
+                                <li class="font-semibold">Top Level Domain: <span class="font-medium" id="Domain"></span></li>
+                                <li class="font-semibold">Currencies: <span class="font-medium" id="Currencies"></span></li>
+                                <li class="font-semibold">Languages: <span class="font-medium" id="Languages"></span></li>
                             </ul>
                         </section>
-                        <section class="mt-5">
+                        <section>
                             <h2 class="text-lg mb-4"> Border Countries:</h2>
-                            <section>
-                                <a href="" class="content p-1 px-4 bg-white hover:opacity-75 transition-all rounded-sm shadow-[0_0_15px_-0] shadow-black/15 text-sm">France</a>
-                                <a href="" class="content p-1 px-4 bg-white hover:opacity-75 transition-all rounded-sm shadow-[0_0_15px_-0] shadow-black/15 text-sm">Germany</a>
-                                <a href="" class="content p-1 px-4 bg-white hover:opacity-75 transition-all rounded-sm shadow-[0_0_15px_-0] shadow-black/15 text-sm">Netherlands</a>
+                            <section id="border-container" class="flex flex-wrap gap-2">
                             </section>
                         </section>
                     </section>

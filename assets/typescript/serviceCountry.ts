@@ -1,4 +1,5 @@
 export class ApiCountry {
+    protected sectionCountries = document.getElementById('countries-section') as HTMLElement;
     private api: string = 'https://restcountries.com/v3.1';
 
     protected async getAllCounties(path: string = '/all') {
@@ -14,11 +15,13 @@ export class ApiCountry {
             return [];
         }
     }
+
+    
     protected showErrorMessage(error: string) {
-        const sectionCountries = document.getElementById('countries-section') as HTMLElement;
+        this.sectionCountries.innerHTML='';
         const element = document.createElement('section');
         element.classList.add('message');
         element.textContent = error;
-        sectionCountries.append(element);
+        this.sectionCountries.append(element);
     }
 }
