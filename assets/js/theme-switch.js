@@ -6,9 +6,9 @@ export function theme_switch() {
     change_theme.addEventListener('click', () => {
         document.body.classList.toggle('dark-theme');
         if (document.body.classList.contains('dark-theme')) {
-            document.cookie = `theme=dark`;
+            document.cookie = `theme=dark;max-age=${3 * 24 * 60 * 60};path=/`;
             return;
         }
-        document.cookie = 'theme=dark;max-age=0';
+        document.cookie = 'theme=dark;max-age=0;path=/';
     });
 }

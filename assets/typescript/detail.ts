@@ -19,5 +19,5 @@ if(searchParams.get(parameterKey)){
     // Search based on the given key
     countryView.searchCountry(parameterKey,searchParams.get(parameterKey)!);
 }else{
-    window.location.href=window.location.origin+'/index.html';
+    window.location.href=window.location.origin+'/Rest-countries/index.html';
 }
