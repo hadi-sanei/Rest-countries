@@ -57,8 +57,8 @@ export class CountryView extends ApiCountry {
             this.showErrorMessage(error.message);
         }
     }
-    searchCountry(countryName) {
-        const country = this.getAllCounties('/name/' + countryName);
+    searchCountry(field, value) {
+        const country = this.getAllCounties(`/${field}/` + value);
         country.then(([data]) => {
             if (this.checkIFCountriesExist(data)) {
                 return;
@@ -79,9 +79,9 @@ export class CountryView extends ApiCountry {
             const element = document.createElement('article');
             element.classList.add('country-box');
             element.innerHTML = `
-                    <a href="./detail.html?country=${country.name.common}">
+                    <a href="./detail.html?name=${country.name.common}">
                         <section>
-                            <img class="flag-image" src="${country.flags.png}" alt="">
+                            <img class="flag-image" src="${country.flags.svg}" alt="">
                         </section>
                         <section class="detail-box">
                             <header>
@@ -117,12 +117,14 @@ export class CountryView extends ApiCountry {
         const languages = document.getElementById('Languages');
         const borderContainer = document.getElementById('border-container');
         countryName.textContent = country.name.common;
-        nativeName.textContent = country.name.common;
+        nativeName.textContent = Object.entries(country.name.nativeName)
+            .map(([key, value]) => value.common)
+            .join(', ');
         population.textContent = country.population.toLocaleString();
         region.textContent = country.region;
         subRegion.textContent = country.subregion;
         capital.textContent = country.capital;
-        countryImage.src = country.flags.png;
+        countryImage.src = country.flags.svg;
         domain.textContent = country.tld;
         currencies.textContent = Object.values(country.currencies)
             .map((currency) => currency.name)
@@ -131,14 +133,15 @@ export class CountryView extends ApiCountry {
         if (country.borders) {
             country.borders.forEach((border) => {
                 const button = document.createElement('a');
-                button.href = './detail.html?country=' + border;
+                button.href = './detail.html?alpha=' + border;
                 button.textContent = border;
                 button.classList.add('btn');
                 borderContainer.appendChild(button);
             });
         }
         else {
-            borderContainer.parentElement.remove();
+            const border = document.getElementById('Border');
+            border.innerHTML += `<span class="text-sm"> No Borders...</span>`;
         }
     }
     checkIFCountriesExist(countries) {

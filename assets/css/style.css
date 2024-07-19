@@ -810,6 +810,10 @@ body {
   margin-top: 1.75rem;
 }
 
+.mt-14 {
+  margin-top: 3.5rem;
+}
+
 .inline-block {
   display: inline-block;
 }
@@ -874,12 +878,6 @@ body {
   --tw-space-y-reverse: 0;
   margin-top: calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.25rem * var(--tw-space-y-reverse));
-}
-
-.space-y-2 > :not([hidden]) ~ :not([hidden]) {
-  --tw-space-y-reverse: 0;
-  margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
-  margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
 
 .space-y-3 > :not([hidden]) ~ :not([hidden]) {
@@ -1204,5 +1202,11 @@ body.dark-theme .btn {
   .lg\:text-2xl {
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .xl\:gap-52 {
+    gap: 13rem;
   }
 }

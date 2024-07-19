@@ -1,10 +1,12 @@
 export interface Country {
     name: {
         common:string
-        official:string
+        official:string,
+        nativeName:string,
     },
     flags: {
-        png:string
+        png:string,
+        svg:string,
     },
     region: string,
     capital: string,
